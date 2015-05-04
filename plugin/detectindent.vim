@@ -155,15 +155,17 @@ fun! <SID>DetectIndent()
         " spaces and tabs
         let l:verbose_msg = "Detected spaces and tabs"
         setl noexpandtab
-        let &l:shiftwidth = l:shortest_leading_spaces_run
 
         " mmmm, time to guess how big tabs are
         if l:longest_leading_spaces_run <= 2
             let &l:tabstop = 2
+            let &l:shiftwidth = 2
         elseif l:longest_leading_spaces_run <= 4
             let &l:tabstop = 4
+            let &l:shiftwidth = 4
         else
             let &l:tabstop = 8
+            let &l:shiftwidth = 8
         endif
 
     else
